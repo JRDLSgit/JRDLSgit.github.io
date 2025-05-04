@@ -302,9 +302,19 @@
                     </div>
                 </div>
                 <div class="md:hidden">
-                    <button class="text-white focus:outline-none">
+                    <button class="text-white focus:outline-none" id="mobile-menu-button">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
+                </div>
+            </div>
+            <div class="hidden md:hidden" id="mobile-menu">
+                <div class="ml-10 flex flex-col items-baseline space-y-4">
+                    <a href="#inicio" class="menu-item text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300" data-section="inicio">Inicio</a>
+                    <a href="#nosotros" class="menu-item text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300" data-section="nosotros">Nosotros</a>
+                    <a href="#servicios" class="menu-item text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300" data-section="servicios">Servicios</a>
+                    <a href="#equipo" class="menu-item text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300" data-section="equipo">Equipo</a>
+                    <a href="#eventos" class="menu-item text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300" data-section="eventos">Eventos</a>
+                    <a href="#contacto" class="menu-item text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300" data-section="contacto">Contacto</a>
                 </div>
             </div>
         </div>
@@ -789,14 +799,14 @@
                 });
             });
             
-            // Mobile menu toggle (would need implementation)
-            const mobileMenuButton = document.querySelector('.md\\:hidden button');
-            if (mobileMenuButton) {
-                mobileMenuButton.addEventListener('click', function() {
-                    // Implement mobile menu toggle functionality here
-                    console.log('Mobile menu clicked');
-                });
-            }
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', function () {
+                // Toggle the visibility of the mobile menu
+                mobileMenu.classList.toggle('hidden');
+            });
             
             // Add typing animation to elements with typing class
             const typingElements = document.querySelectorAll('.typing');
