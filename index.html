@@ -11,8 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6c2be3;
-            --secondary: #ff3e9d;
+            --primary: hwb(136 29% 1%);
+            --secondary: hwb(125 0% 36%);
             --dark: #0f0f1a;
             --light: #f8f9fa;
         }
@@ -68,7 +68,7 @@
         
         @keyframes pulse {
             0% {
-                box-shadow: 0 0 0 0 rgba(108, 43, 227, 0.7);
+                box-shadow: 0 0 0 0 #43ee79b3;
             }
             70% {
                 box-shadow: 0 0 0 15px rgba(108, 43, 227, 0);
@@ -91,31 +91,195 @@
             }
         }
         
-        .fade-in {
-            animation: fadeIn 1s ease-in;
+        /* New Animations */
+        .text-shimmer {
+            position: relative;
+            display: inline-block;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .text-shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 2s infinite;
         }
         
-        .slide-in-left {
-            animation: slideInLeft 1s ease-out;
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
         }
         
-        @keyframes slideInLeft {
-            from { transform: translateX(-50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+        .float {
+            animation: float 6s ease-in-out infinite;
         }
         
-        .slide-in-right {
-            animation: slideInRight 1s ease-out;
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
         
-        @keyframes slideInRight {
-            from { transform: translateX(50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+        .rotate {
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .scale-in {
+            animation: scaleIn 1s ease-out;
+        }
+        
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .typing {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--secondary);
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--secondary) }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-down {
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-left {
+            animation: fadeInLeft 1s ease-out;
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .fade-in-right {
+            animation: fadeInRight 1s ease-out;
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .menu-item {
+            position: relative;
+        }
+        
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        
+        .menu-item:hover::after {
+            width: 100%;
+        }
+        
+        .menu-item.active::after {
+            width: 100%;
+        }
+        
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(108, 43, 227, 0.5), 0 0 10px rgba(108, 43, 227, 0.5);
+            }
+            to {
+                text-shadow: 0 0 10px rgba(108, 43, 227, 0.8), 0 0 20px rgba(108, 43, 227, 0.8), 0 0 30px rgba(255, 62, 157, 0.5);
+            }
+        }
+        
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
         }
     </style>
 </head>
@@ -125,16 +289,16 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold gradient-text">ATOMIC WAVES</span>
+                    <img src="titulo.jpg" alt="ATOMIC WAVES" class="h-12 sm:h-16 md:h-18 lg:h-20">
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#inicio" class="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Inicio</a>
-                        <a href="#nosotros" class="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Nosotros</a>
-                        <a href="#servicios" class="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Servicios</a>
-                        <a href="#equipo" class="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Equipo</a>
-                        <a href="#eventos" class="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Eventos</a>
-                        <a href="#contacto" class="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium transition duration-300">Contacto</a>
+                        <a href="#inicio" class="menu-item text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300" data-section="inicio">Inicio</a>
+                        <a href="#nosotros" class="menu-item text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300" data-section="nosotros">Nosotros</a>
+                        <a href="#servicios" class="menu-item text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300" data-section="servicios">Servicios</a>
+                        <a href="#equipo" class="menu-item text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300" data-section="equipo">Equipo</a>
+                        <a href="#eventos" class="menu-item text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300" data-section="eventos">Eventos</a>
+                        <a href="#contacto" class="menu-item text-white px-3 py-2 rounded-md text-sm font-medium transition duration-300" data-section="contacto">Contacto</a>
                     </div>
                 </div>
                 <div class="md:hidden">
@@ -147,17 +311,17 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero-section min-h-screen flex items-center justify-center relative overflow-hidden fade-in">
+    <section id="inicio" class="hero-section min-h-screen flex items-center justify-center relative overflow-hidden">
         <div class="absolute inset-0 bg-black opacity-50"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center py-32">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 slide-in-left">
-                <span class="gradient-text">EXPERIENCIAS</span> <span class="text-white">QUE RESUENAN</span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 fade-in-down">
+                <span class="gradient-text text-shimmer">EXPERIENCIAS</span> <span class="text-white bounce">QUE RESUENAN</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto slide-in-right">
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto fade-in-up">
                 Conectamos a nuestro público con el mejor talento emergente y destacado, creando momentos inolvidables a través de la música y el arte.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#contacto" class="px-8 py-4 gradient-bg text-white font-bold rounded-full hover:opacity-90 transition duration-300 transform hover:scale-105">
+                <a href="#contacto" class="px-8 py-4 gradient-bg text-white font-bold rounded-full hover:opacity-90 transition duration-300 transform hover:scale-105 pulse">
                     CONTÁCTANOS
                 </a>
                 <a href="#servicios" class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-black transition duration-300 transform hover:scale-105">
@@ -176,31 +340,31 @@
     <section id="nosotros" class="py-20 bg-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 gradient-text">¿QUIÉNES SOMOS?</h2>
-                <div class="w-24 h-1 gradient-bg mx-auto mb-6"></div>
-                <p class="text-gray-300 max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold mb-4 gradient-text fade-in-down">¿QUIÉNES SOMOS?</h2>
+                <div class="w-24 h-1 gradient-bg mx-auto mb-6 fade-in-up"></div>
+                <p class="text-gray-300 max-w-3xl mx-auto fade-in-up">
                     Somos una productora de eventos dedicada a ofrecer experiencias únicas y memorables en la escena musical electrónica y urbana.
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="relative">
+                <div class="relative fade-in-left">
                     <div class="absolute -inset-4 gradient-bg rounded-xl opacity-20 blur"></div>
                     <div class="relative bg-gray-900 rounded-xl overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Evento musical" class="w-full h-full object-cover">
                     </div>
                 </div>
                 
-                <div>
+                <div class="fade-in-right">
                     <div class="mb-8">
-                        <h3 class="text-2xl font-bold mb-4 gradient-text inline-block">VISIÓN</h3>
+                        <h3 class="text-2xl font-bold mb-4 gradient-text inline-block typing">VISIÓN</h3>
                         <p class="text-gray-300">
                             Aspiramos a ser un referente global en la producción de eventos musicales, reconocidos por nuestra capacidad de descubrir y promover nuevos talentos, así como por la creación de experiencias inolvidables que definan tendencias en la música electrónica y urbana.
                         </p>
                     </div>
                     
                     <div>
-                        <h3 class="text-2xl font-bold mb-4 gradient-text inline-block">MISIÓN</h3>
+                        <h3 class="text-2xl font-bold mb-4 gradient-text inline-block typing">MISIÓN</h3>
                         <p class="text-gray-300">
                             Nuestra misión es producir eventos innovadores y de alta calidad que impulsen el talento emergente y sobresaliente de la escena musical electrónica y urbana. Buscamos generar conexiones auténticas entre los artistas y su público, elevando la experiencia cultural y artística de cada evento.
                         </p>
@@ -214,98 +378,98 @@
     <section id="servicios" class="py-20 bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 gradient-text">NUESTROS SERVICIOS</h2>
-                <div class="w-24 h-1 gradient-bg mx-auto mb-6"></div>
-                <p class="text-gray-300 max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold mb-4 gradient-text fade-in-down">NUESTROS SERVICIOS</h2>
+                <div class="w-24 h-1 gradient-bg mx-auto mb-6 fade-in-up"></div>
+                <p class="text-gray-300 max-w-3xl mx-auto fade-in-up">
                     Ofrecemos soluciones integrales para la producción de eventos musicales de alta calidad.
                 </p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Service 1 -->
-                <div class="bg-gray-800 rounded-xl p-8 card-hover">
-                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6 mx-auto">
+                <div class="bg-gray-800 rounded-xl p-8 card-hover fade-in-left">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6 mx-auto rotate">
                         <i class="fas fa-music text-white text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-4 text-white text-center">Producción de Eventos</h3>
                     <ul class="text-gray-300 space-y-2">
                         <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mt-1 mr-2"></i>
+                            <i class="fas fa-check text-purple-400 mt-1 mr-2 bounce"></i>
                             <span>Eventos Privados</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mt-1 mr-2"></i>
+                            <i class="fas fa-check text-purple-400 mt-1 mr-2 bounce"></i>
                             <span>Corporativos</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mt-1 mr-2"></i>
+                            <i class="fas fa-check text-purple-400 mt-1 mr-2 bounce"></i>
                             <span>Culturales</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mt-1 mr-2"></i>
+                            <i class="fas fa-check text-purple-400 mt-1 mr-2 bounce"></i>
                             <span>Sociales</span>
                         </li>
                     </ul>
                 </div>
                 
                 <!-- Service 2 -->
-                <div class="bg-gray-800 rounded-xl p-8 card-hover">
-                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6 mx-auto">
+                <div class="bg-gray-800 rounded-xl p-8 card-hover fade-in-up">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6 mx-auto rotate">
                         <i class="fas fa-bullhorn text-white text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-4 text-white text-center">Promoción y Marketing</h3>
                     <ul class="text-gray-300 space-y-2">
                         <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mt-1 mr-2"></i>
+                            <i class="fas fa-check text-purple-400 mt-1 mr-2 bounce"></i>
                             <span>Promoción de marcas</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mt-1 mr-2"></i>
+                            <i class="fas fa-check text-purple-400 mt-1 mr-2 bounce"></i>
                             <span>Marketing estratégico</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mt-1 mr-2"></i>
+                            <i class="fas fa-check text-purple-400 mt-1 mr-2 bounce"></i>
                             <span>Lanzamientos</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mt-1 mr-2"></i>
+                            <i class="fas fa-check text-purple-400 mt-1 mr-2 bounce"></i>
                             <span>Activaciones</span>
                         </li>
                     </ul>
                 </div>
                 
                 <!-- Service 3 -->
-                <div class="bg-gray-800 rounded-xl p-8 card-hover">
-                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6 mx-auto">
+                <div class="bg-gray-800 rounded-xl p-8 card-hover fade-in-right">
+                    <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mb-6 mx-auto rotate">
                         <i class="fas fa-photo-film text-white text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-4 text-white text-center">Contenido Creativo</h3>
                     <ul class="text-gray-300 space-y-2">
                         <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mt-1 mr-2"></i>
+                            <i class="fas fa-check text-purple-400 mt-1 mr-2 bounce"></i>
                             <span>Diseño Gráfico</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mt-1 mr-2"></i>
+                            <i class="fas fa-check text-purple-400 mt-1 mr-2 bounce"></i>
                             <span>Fotografía profesional</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mt-1 mr=2"></i>
+                            <i class="fas fa-check text-purple-400 mt-1 mr-2 bounce"></i>
                             <span>Animación</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mt-1 mr-2"></i>
+                            <i class="fas fa-check text-purple-400 mt-1 mr-2 bounce"></i>
                             <span>Logos y branding</span>
                         </li>
                     </ul>
                 </div>
             </div>
             
-            <div class="mt-16 bg-gray-800 rounded-xl p-8 card-hover">
+            <div class="mt-16 bg-gray-800 rounded-xl p-8 card-hover scale-in">
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-1/3 mb-6 md:mb-0 flex justify-center">
                         <div class="relative wave">
-                            <img src="https://images.unsplash.com/photo-1571330735066-03aaa9429d89?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Equipo Pioneer" class="w-64 h-64 object-cover rounded-full border-4 border-purple-500">
+                            <img src="Audio.jpg" alt="Equipo Pioneer" class="w-64 h-64 object-cover rounded-full border-4 border-purple-500">
                         </div>
                     </div>
                     <div class="md:w-2/3 md:pl-12 text-center md:text-left">
@@ -315,15 +479,15 @@
                         </p>
                         <div class="flex flex-wrap justify-center md:justify-start gap-4">
                             <div class="flex items-center">
-                                <i class="fas fa-volume-high text-purple-400 mr-2"></i>
+                                <i class="fas fa-volume-high text-purple-400 mr-2 bounce"></i>
                                 <span class="text-gray-300">Sistemas de sonido profesional</span>
                             </div>
                             <div class="flex items-center">
-                                <i class="fas fa-lightbulb text-purple-400 mr-2"></i>
+                                <i class="fas fa-lightbulb text-purple-400 mr-2 bounce"></i>
                                 <span class="text-gray-300">Iluminación LED avanzada</span>
                             </div>
                             <div class="flex items-center">
-                                <i class="fas fa-sliders text-purple-400 mr=2"></i>
+                                <i class="fas fa-sliders text-purple-400 mr-2 bounce"></i>
                                 <span class="text-gray-300">Equipos Pioneer DJ</span>
                             </div>
                         </div>
@@ -337,33 +501,33 @@
     <section id="equipo" class="py-20 bg-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 gradient-text">NUESTRO EQUIPO</h2>
-                <div class="w-24 h-1 gradient-bg mx-auto mb-6"></div>
-                <p class="text-gray-300 max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold mb-4 gradient-text fade-in-down">NUESTRO EQUIPO</h2>
+                <div class="w-24 h-1 gradient-bg mx-auto mb-6 fade-in-up"></div>
+                <p class="text-gray-300 max-w-3xl mx-auto fade-in-up">
                     Profesionales apasionados por la música y la creación de experiencias inolvidables.
                 </p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Team Member 1 -->
-                <div class="relative group">
+                <div class="relative group fade-in-left">
                     <div class="overflow-hidden rounded-xl">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1976&q=80" alt="Alma Regalado" class="w-full h-96 object-cover transition duration-500 group-hover:scale-110">
+                        <img src="alma.jpg" alt="Alma Regalado" class="w-full h-96 object-cover transition duration-500 group-hover:scale-110">
                     </div>
                     <div class="team-overlay absolute inset-0 bg-gradient-to-t from-black to-transparent flex flex-col justify-end p-6">
                         <h3 class="text-2xl font-bold text-white">ALMA REGALADO</h3>
                         <p class="text-purple-300 mb-2">Licenciada en mercadotecnia, DJ & Productora</p>
                         <p class="text-gray-300">Directora de proyectos</p>
                         <div class="flex mt-4 space-x-4">
-                            <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white hover:text-purple-300 bounce"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-white hover:text-purple-300 bounce"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-white hover:text-purple-300 bounce"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Team Member 2 -->
-                <div class="relative group">
+                <div class="relative group fade-in-up">
                     <div class="overflow-hidden rounded-xl">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Usiel García" class="w-full h-96 object-cover transition duration-500 group-hover:scale-110">
                     </div>
@@ -372,15 +536,15 @@
                         <p class="text-purple-300 mb-2">Fotógrafo profesional</p>
                         <p class="text-gray-300">Especialista en fotografía de eventos y producto</p>
                         <div class="flex mt-4 space-x-4">
-                            <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white hover:text-purple-300 bounce"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-white hover:text-purple-300 bounce"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-white hover:text-purple-300 bounce"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Team Member 3 -->
-                <div class="relative group">
+                <div class="relative group fade-in-right">
                     <div class="overflow-hidden rounded-xl">
                         <img src="https://images.unsplash.com/photo-1542178243-bc20204b769f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="Cesar Medina" class="w-full h-96 object-cover transition duration-500 group-hover:scale-110">
                     </div>
@@ -389,9 +553,9 @@
                         <p class="text-purple-300 mb-2">Diseñador gráfico</p>
                         <p class="text-gray-300">Especialista en branding y diseño para eventos</p>
                         <div class="flex mt-4 space-x-4">
-                            <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white hover:text-purple-300 bounce"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-white hover:text-purple-300 bounce"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-white hover:text-purple-300 bounce"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
@@ -403,16 +567,16 @@
     <section id="eventos" class="py-20 bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 gradient-text">NUESTROS EVENTOS</h2>
-                <div class="w-24 h-1 gradient-bg mx-auto mb-6"></div>
-                <p class="text-gray-300 max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold mb-4 gradient-text fade-in-down">NUESTROS EVENTOS</h2>
+                <div class="w-24 h-1 gradient-bg mx-auto mb-6 fade-in-up"></div>
+                <p class="text-gray-300 max-w-3xl mx-auto fade-in-up">
                     Experiencias únicas que fusionan música, arte y cultura.
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 items-center">
-                <div class="order-2 md:order-1">
-                    <h3 class="text-3xl font-bold mb-6 gradient-text">FASHION & SOUND</h3>
+                <div class="order-2 md:order-1 fade-in-left">
+                    <h3 class="text-3xl font-bold mb-6 gradient-text text-shimmer">FASHION & SOUND</h3>
                     <p class="text-gray-300 mb-6">
                         Festival que nace de la fusión entre la música y la moda, en un escenario mágico e inspirador: Teotihuacan, México. Este festival ofrece más de 12 horas de música electrónica ininterrumpida, con tres impresionantes escenarios que vibrarán al ritmo de los mejores DJs de la escena mexicana.
                     </p>
@@ -420,17 +584,17 @@
                         Además, una espectacular pasarela reunirá a modelos y destacados diseñadores de moda mexicana, creando una experiencia sensorial donde el arte, la cultura y el estilo se entrelazan para ofrecer un espectáculo inolvidable.
                     </p>
                     <div class="flex items-center space-x-4">
-                        <a href="#" class="text-white hover:text-purple-300">
+                        <a href="#" class="text-white hover:text-purple-300 bounce">
                             <i class="fab fa-instagram text-2xl"></i>
                         </a>
                         <span class="text-gray-300">@fashionandsoundmx</span>
                     </div>
                 </div>
                 
-                <div class="order-1 md:order-2 relative">
+                <div class="order-1 md:order-2 relative fade-in-right">
                     <div class="absolute -inset-4 gradient-bg rounded-xl opacity-20 blur"></div>
                     <div class="relative overflow-hidden rounded-xl">
-                        <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Fashion & Sound" class="w-full h-auto object-cover transition duration-500 hover:scale-105">
+                        <img src="Fashion.jpg" alt="Fashion & Sound" class="w-full h-auto object-cover transition duration-500 hover:scale-105">
                     </div>
                 </div>
             </div>
@@ -441,21 +605,21 @@
     <section id="contacto" class="py-20 bg-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 gradient-text">CONTÁCTANOS</h2>
-                <div class="w-24 h-1 gradient-bg mx-auto mb-6"></div>
-                <p class="text-gray-300 max-w-3xl mx-auto">
+                <h2 class="text-4xl font-bold mb-4 gradient-text fade-in-down">CONTÁCTANOS</h2>
+                <div class="w-24 h-1 gradient-bg mx-auto mb-6 fade-in-up"></div>
+                <p class="text-gray-300 max-w-3xl mx-auto fade-in-up">
                     ¿Listo para crear una experiencia inolvidable? Ponte en contacto con nuestro equipo.
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-12">
-                <div>
+                <div class="fade-in-left">
                     <div class="bg-gray-900 rounded-xl p-8 h-full">
                         <h3 class="text-2xl font-bold mb-6 gradient-text">Información de contacto</h3>
                         
                         <div class="space-y-6">
                             <div class="flex items-start">
-                                <div class="w-10 h-10 gradient-bg rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                <div class="w-10 h-10 gradient-bg rounded-full flex items-center justify-center flex-shrink-0 mr-4 pulse">
                                     <i class="fas fa-phone text-white"></i>
                                 </div>
                                 <div>
@@ -465,7 +629,7 @@
                             </div>
                             
                             <div class="flex items-start">
-                                <div class="w-10 h-10 gradient-bg rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                <div class="w-10 h-10 gradient-bg rounded-full flex items-center justify-center flex-shrink-0 mr-4 pulse">
                                     <i class="fas fa-envelope text-white"></i>
                                 </div>
                                 <div>
@@ -475,7 +639,7 @@
                             </div>
                             
                             <div class="flex items-start">
-                                <div class="w-10 h-10 gradient-bg rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                <div class="w-10 h-10 gradient-bg rounded-full flex items-center justify-center flex-shrink-0 mr-4 pulse">
                                     <i class="fab fa-instagram text-white"></i>
                                 </div>
                                 <div>
@@ -490,16 +654,16 @@
                         <div class="mt-12">
                             <h4 class="text-lg font-semibold text-white mb-4">Síguenos</h4>
                             <div class="flex space-x-4">
-                                <a href="#" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white hover:opacity-90 transition">
+                                <a href="#" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white hover:opacity-90 transition bounce">
                                     <i class="fab fa-instagram text-xl"></i>
                                 </a>
-                                <a href="#" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white hover:opacity-90 transition">
+                                <a href="#" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white hover:opacity-90 transition bounce">
                                     <i class="fab fa-facebook-f text-xl"></i>
                                 </a>
-                                <a href="#" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white hover:opacity-90 transition">
+                                <a href="#" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white hover:opacity-90 transition bounce">
                                     <i class="fab fa-twitter text-xl"></i>
                                 </a>
-                                <a href="#" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white hover:opacity-90 transition">
+                                <a href="#" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white hover:opacity-90 transition bounce">
                                     <i class="fab fa-youtube text-xl"></i>
                                 </a>
                             </div>
@@ -507,7 +671,7 @@
                     </div>
                 </div>
                 
-                <div>
+                <div class="fade-in-right">
                     <div class="bg-gray-900 rounded-xl p-8 h-full">
                         <h3 class="text-2xl font-bold mb-6 gradient-text">Envíanos un mensaje</h3>
                         <form>
@@ -523,7 +687,7 @@
                                 <label for="message" class="block text-gray-300 mb-2">Mensaje</label>
                                 <textarea id="message" rows="5" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white"></textarea>
                             </div>
-                            <button type="submit" class="w-full gradient-bg text-white font-bold py-4 px-6 rounded-lg hover:opacity-90 transition duration-300">
+                            <button type="submit" class="w-full gradient-bg text-white font-bold py-4 px-6 rounded-lg hover:opacity-90 transition duration-300 pulse">
                                 ENVIAR MENSAJE
                             </button>
                         </form>
@@ -537,28 +701,28 @@
     <footer class="bg-gray-900 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <span class="text-2xl font-bold gradient-text">ATOMIC WAVES</span>
+                <div class="mb-6 md:mb-0 fade-in-left">
+                    <span class="text-2xl font-bold gradient-text glow">ATOMIC WAVES</span>
                     <p class="text-gray-400 mt-2">Creadores de experiencias musicales inolvidables</p>
                 </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition">
+                <div class="flex space-x-6 fade-in-right">
+                    <a href="#" class="text-gray-400 hover:text-white transition bounce">
                         <i class="fab fa-instagram text-xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
+                    <a href="#" class="text-gray-400 hover:text-white transition bounce">
                         <i class="fab fa-facebook-f text-xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
+                    <a href="#" class="text-gray-400 hover:text-white transition bounce">
                         <i class="fab fa-twitter text-xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
+                    <a href="#" class="text-gray-400 hover:text-white transition bounce">
                         <i class="fab fa-youtube text-xl"></i>
                     </a>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Atomic Waves. Todos los derechos reservados.</p>
-                <div class="flex space-x-6">
+                <p class="text-gray-400 mb-4 md:mb-0 fade-in-up">© 2023 Atomic Waves. Todos los derechos reservados.</p>
+                <div class="flex space-x-6 fade-in-up">
                     <a href="#" class="text-gray-400 hover:text-white transition">Política de privacidad</a>
                     <a href="#" class="text-gray-400 hover:text-white transition">Términos de servicio</a>
                 </div>
@@ -567,27 +731,44 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <a href="#inicio" class="fixed bottom-8 right-8 w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white shadow-lg hover:opacity-90 transition duration-300 z-50">
+    <a href="#inicio" class="fixed bottom-8 right-8 w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white shadow-lg hover:opacity-90 transition duration-300 z-50 bounce">
         <i class="fas fa-arrow-up"></i>
     </a>
 
     <script>
         // Simple animations on scroll
         document.addEventListener('DOMContentLoaded', function() {
+            // Add active class to menu items on scroll
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.menu-item');
+            
             const observerOptions = {
-                threshold: 0.1
+                threshold: 0.3
             };
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
+                        // Remove active class from all nav items
+                        navItems.forEach(item => {
+                            item.classList.remove('active');
+                        });
+                        
+                        // Add active class to corresponding nav item
+                        const id = entry.target.getAttribute('id');
+                        const navItem = document.querySelector(`.menu-item[data-section="${id}"]`);
+                        if (navItem) {
+                            navItem.classList.add('active');
+                        }
+                        
+                        // Add animation classes
                         entry.target.classList.add('animate-fadeIn');
                     }
                 });
             }, observerOptions);
             
             // Observe all sections
-            document.querySelectorAll('section').forEach(section => {
+            sections.forEach(section => {
                 observer.observe(section);
             });
             
@@ -616,6 +797,27 @@
                     console.log('Mobile menu clicked');
                 });
             }
+            
+            // Add typing animation to elements with typing class
+            const typingElements = document.querySelectorAll('.typing');
+            typingElements.forEach((el, index) => {
+                // Add delay based on index
+                el.style.animationDelay = `${index * 0.5}s`;
+            });
+            
+            // Add shimmer effect to text-shimmer elements
+            const shimmerElements = document.querySelectorAll('.text-shimmer');
+            shimmerElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    el.classList.add('text-shimmer');
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    setTimeout(() => {
+                        el.classList.remove('text-shimmer');
+                    }, 2000);
+                });
+            });
         });
     </script>
 </body>
