@@ -106,7 +106,7 @@
             bottom: 0;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transform: translateX(-100%);
-            animation: shimmer 2s infinite;
+            animation: shimmer 0s infinite;
         }
         
         @keyframes shimmer {
@@ -686,7 +686,7 @@
                         <div class="mt-12">
                             <h4 class="text-lg font-semibold text-white mb-4">Síguenos</h4>
                             <div class="flex space-x-4">
-                                <a href="https://www.instagram.com/atomic_waves_/" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white hover:opacity-90 transition bounce">
+                                <a href="https://www.instagram.com/atomic_waves_/ñ" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white hover:opacity-90 transition bounce">
                                     <i class="fab fa-instagram text-xl"></i>
                                 </a>
                                 <a href="#" class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center text-white hover:opacity-90 transition bounce">
@@ -828,6 +828,14 @@
             mobileMenuButton.addEventListener('click', function () {
                 // Toggle the visibility of the mobile menu
                 mobileMenu.classList.toggle('hidden');
+            });
+
+            // Hide the mobile menu when a link is clicked
+            const menuLinks = mobileMenu.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.add('hidden');
+                });
             });
             
             // Add typing animation to elements with typing class
