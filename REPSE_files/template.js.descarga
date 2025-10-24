@@ -1,0 +1,142 @@
+function completacuestionario(numact) {
+    var num_act=$('#addactscomer').data('acts')+1;
+    var num_input=2;
+    $( ".formremove" ).each(function( index ) {
+        num_input++;
+    });
+    $('.addactivities').append('<div id="divact'+num_act+'" class="divtopinput"><span class="listinput">'+num_input+'.-</span><input type="text" class="form-control formremove" id="act_comer'+num_act+'" name="act_comer[]"><span onclick="removecomer(\'divact'+num_act+'\')" class="removeinput">X</span></div>');
+    $('#addactscomer').data('acts',num_act);
+}
+function removecomer(id) {
+
+    var num_act=$('#addactscomer').data('acts')-1;
+    $('#'+id).remove();
+    $('#addactscomer').data('acts',num_act);
+    var num_input=2;
+    $( ".divtopinput" ).each(function( index ) {
+        $(this).find( ".listinput" ).html(num_input+'.-');
+        num_input++;
+    });
+}
+function saveact(act){
+    //TODO DATA PARA GUARDAR ACTIVIDAD Y DESACTIVAR CAMPOS
+    $('#divact'+act+' :input').each(function(){
+       $(this).prop('readonly', true);
+    })
+    $('#buttonact'+act).html('<button class="btn btn-light" type="button" id="addactscomer" data-bs-toggle="modal" data-bs-target="#addact'+act+'" data-acts="0"><span>Revisar</span></button> <button class="btn btn-light" type="button" id="addactscomer" onclick="deleteact('+act+')" data-acts="'+act+'"><span>Eliminar</span></button>')
+
+}
+
+function getFileExtension(filename) {
+    return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
+}
+function valid_file(id) {
+    var ext = getFileExtension($('#'+id).val());
+    
+    switch (ext.toLowerCase()) {
+        case 'jpg':
+        case 'jpeg':
+        case 'pdf':
+        case 'png':
+        case 'xml':
+            return true;
+            break;
+        default:
+            return false;
+    }
+}
+function terms() {
+    alert('Términos y condiciones');
+}
+function cambiavista(step,where) {
+    var next=step+1;
+    var before=step-1;
+    if (where===1) {
+        //atras
+        $('#step'+step).removeClass('active');
+        $('#step'+before).addClass('active').removeClass('finished');
+    } else {
+        //adelante
+        $('#step' + step).removeClass('active').addClass('finished');
+        $('#step' + next).addClass('active');
+    }
+}
+$( document ).ready(function() {
+    $('input[type=file]').change(function(){
+        var filename = $(this).val().split('\\').pop();
+        var idname = $(this).attr('id');
+        var size = parseFloat($(this)[0].files[0].size / 1024/1024).toFixed(2);
+        // TODO VALORAR METER UN AJAX DE VALIDACIÓN BACK
+
+        if(valid_file(idname) && size<=2) {
+            $('.'+idname).find('.fileleft').removeClass('fileup').removeClass('filewrong').addClass('fileok');
+            $('.'+idname+'wrongmsg').html('');
+
+        } else {
+            $(this).val('');
+            $('.'+idname).find('.fileleft').removeClass('fileup').addClass('filewrong');
+            // TODO cambiar confirms para ajustar a estilos ventanas emergentes
+            $('.'+idname+'wrongmsg').html('<i class="fa fa-times"></i> Tipo de documento no permitido, por favor sube una documento que no exeda los 2 MB');
+        }
+    });
+
+
+    $('.btnexit').click(function(e) {
+        location.href = "/app/logout/";
+    });
+    $('.toggle').click(function(e) {
+        e.preventDefault();
+
+        var $this = $(this);
+
+        if ($this.next().hasClass('show')) {
+            $this.next().removeClass('show');
+            $this.next().slideUp(350);
+            $this.removeClass('active');
+            $this.parent().find('.toggle').removeClass("active");
+
+        } else {
+            $this.parent().parent().find('li .inner').removeClass('show');
+            $this.parent().parent().find('li .inner').slideUp(350);
+            $this.next().toggleClass('show');
+            $this.next().slideToggle(350);
+            $this.addClass('active');
+        }
+    });
+
+
+
+    // $('.btn-continue').click(function (e) {
+    //     var step=$(this).data('step');
+    //     var next=step+1;
+    //     var fin=10;
+    //     if ($('#tp').val()==='1'){
+    //         fin=8;
+    //     }
+    //     if (step<fin){
+    //
+    //     }
+    // });
+    //
+    //
+    // $('.btn-return').click(function (e) {
+    //     var step=$(this).data('step');
+    //     var before=step-1;
+    //     /*if(tp == 1 && step == 5){
+    //         $('#step2').removeClass('active');
+    //         $('#step5').addClass('active').removeClass('finished');
+    //     }else{*/
+    //         $('#step'+step).removeClass('active');
+    //         $('#step'+before).addClass('active').removeClass('finished');
+    //     /*}*/
+    //     /*console.log("hola-"+tp);
+    //         var before=step-1;
+    //         console.log(before);
+    //         console.log(step);
+    //         $('#step'+step).removeClass('active');
+    //         $('#step'+before).addClass('active').removeClass('finished');*/
+    //
+    //
+    // });
+
+});

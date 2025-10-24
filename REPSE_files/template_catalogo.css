@@ -1,0 +1,675 @@
+/*template base */
+body {
+    background-color: #e6e6e6;
+    color: #31312f;
+    font-family: 'Montserrat';
+    margin: 0;
+}
+header {
+    height: 60px;
+    background: #003338;
+    width: 100%;
+}
+nav {
+    padding: 5px;
+}
+nav img {
+    height: 50px;
+    display: block;
+    margin-left: 20px;
+}
+a{
+    text-decoration: none;
+}
+.leftbar {
+    width: 100px;
+    background: #00000066;
+    display: block;
+    height: 100vh;
+    float: left;
+    z-index: 10;
+}
+.leftbargre {
+    width: 100px;
+    position: fixed;
+    left: 0;
+    z-index: -11;
+    background: #003338;
+    height: 100%;
+    top: 0;
+}
+.pikachu{
+                color: violet;
+                font-size: 5rem;
+            }
+.content {
+    width: calc(100% - 100px);
+    float: left;
+}
+.regbox.finished {
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 10px;
+}
+.leftmenu {
+    position: absolute;
+    background-color: transparent;
+    width: 100px;
+    left: 0;
+    height: 90px;
+    z-index: -10;
+    /*background-image: url("../img/USER_EDIT.png");*/
+    background-size: 35%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.active .leftmenu {
+    background-color: #004750;
+}
+.active .leftmenu {
+    z-index: 11;
+}
+.finished .leftmenu {
+    z-index: 11;
+}
+.active .leftmenu::after {
+    content: "";
+    position: absolute;
+    left: 100px;
+    width: 0px;
+    height: 0px;
+    border-top: 45px solid transparent;
+    border-bottom: 45px solid transparent;
+    border-left: 25px solid #004750;
+}
+.leftmenu.icon-1 {
+    background-image: url("../img/USER_BLACK.png");
+}
+.active .leftmenu.icon-1,.finished .leftmenu.icon-1 {
+    background-image: url("../img/USER_EDIT.png");
+}
+
+.leftmenu.icon-2 {
+    background-image: url("../img/TABLE_BLACK.png");
+}
+.active .leftmenu.icon-2,.finished .leftmenu.icon-2 {
+    background-image: url("../img/TABLE.png");
+}
+.leftmenu.icon-3 {
+    background-image: url("../img/LOCATION_BLACK.png");
+}
+.active .leftmenu.icon-3,.finished .leftmenu.icon-3 {
+    background-image: url("../img/LOCATION.png");
+}
+.leftmenu.icon-4 {
+    background-image: url("../img/WORK_BLACK.png");
+}
+.active .leftmenu.icon-4,.finished .leftmenu.icon-4 {
+    background-image: url("../img/WORK.png");
+}
+.titlereg {
+    display: none;
+    height: 90px;
+    margin-bottom: 20px;
+}
+
+.titlereg h3 {
+    line-height: 90px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.fullnumber {
+    font-size: 2.5rem;
+    vertical-align: bottom;
+    font-weight: bold;
+    color: #b47f00;
+}
+.headerseccion {
+    padding-left: 60px;
+    box-shadow: -1px 2px 13px #888888;
+}
+.contentsection {
+    display: none;
+}
+.active .contentsection {
+    display: block;
+}
+.active .titlereg {
+    display: block;
+}
+.hidebox {
+    display: none;
+}
+.finished .hidebox{
+    display: block;
+}
+.active .hidebox {
+    display: none;
+}
+.contentsection.leftspace {
+    padding-left: 60px;
+}
+.boldtitle {
+    font-weight: bold;
+    color: #31312f;
+}
+.whitebox {
+    display: block;
+    background: white;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 10px;
+}
+.whitebox p {
+    margin: 0;
+    font-size: .9rem;
+}
+p.labelbox {
+    font-weight: bold;
+}
+p.highlightname {
+    font-weight: 900;
+    color: #004750;
+    font-size: 1rem;
+}
+.form-control {
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+label {
+    font-weight: bold;
+    margin-top: 15px;
+}
+.subsection {
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-bottom: 2px solid #004750;
+    color: #004750;
+    margin: 15px 0px;
+}
+.btn {
+    outline: none;
+    border: none;
+    border-radius: 14px;
+}
+.btn-primary {
+    background: rgb(9,12,13);
+    background: linear-gradient(90deg, rgba(9,12,13,1) 0%, rgba(49,49,47,1) 100%);
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 7px 20px 15px;
+    min-width: 250px;
+    box-shadow: 0px 0px 7px 0px #00000069;
+}
+.btn-secondary {
+    background: rgb(9,12,13);
+    background: linear-gradient(90deg, rgba(5,18,24,1) 0%, rgba(0,71,80,1) 100%);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 7px 10px 10px;
+    min-width: 250px;
+    box-shadow: 0px 0px 7px 0px #00000069;
+    border-radius: 20px;
+}
+.textbut {
+    display: inline-block;
+    vertical-align: middle;
+}
+.btn-primary .textbut::before {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: bottom;
+    content: '';
+}
+.btn-secondary .textbut::before {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    margin-right: 6px;
+    display: inline-block;
+    vertical-align: middle;
+    content: '';
+}
+.btn-primary-right .textbut::after {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: bottom;
+    content: '';
+}
+.btn-primary.btn-cancel, .btn-primary.btn-return {
+    background-image: linear-gradient(90deg, rgba(9,12,13,1) 0%, rgba(49,49,47,1) 100%);
+}
+.btn-primary.btn-cancel .textbut::before {
+    background-image: url('../img/TIMES_GREY.png');
+}
+.btn-primary.btn-return .textbut::before {
+    background-image: url('../img/ARROW_CIRCLE_LEFT.png');
+}
+.btn-primary.btn-cancel .textbut::after {
+    background-image: url('../img/CONT.png');
+}
+.btn-primary.btn-continue {
+    background: linear-gradient(90deg, rgba(5,18,24,1) 0%, rgba(0,71,80,1) 100%);
+}
+.btn-primary.btn-continue .textbut::before {
+    background-image: url('../img/CONT.png');
+}
+.btn-primary.btn-continue .textbut::after {
+    background-image: url('../img/CONT.png');
+}
+.btn-secondary.btn-geo .textbut::before {
+    background-image: url('../img/LOCATION.png');
+}
+.btn-primary.btn-notification .textbut::before {
+    background-image: url('../img/NOTIFICATION.png');
+}
+.btn-primary.btn-help .textbut::before {
+    background-image: url('../img/PF.png');
+}
+.btn-icon{
+    background: rgb(9,12,13);
+    background: linear-gradient(90deg, rgba(5,18,24,1) 0%, rgba(0,71,80,1) 100%);
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 0px 7px 0px #00000069;
+    border-radius: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    margin: 10px;
+    display: block;
+    vertical-align: bottom;
+}
+.btn-icon::after{
+    content: '';
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 26px;
+    height: 30px;
+    display: block;
+    position: absolute;
+    left: 12PX;
+    top: 9px;
+}
+.btn-icon-add::after{
+    background-image: url('../img/PLUS.png');
+}
+.btn-light {
+    background: transparent;
+    color: #004750;
+    font-weight: bold;
+}
+.btn-float-right {
+    float: right;
+}
+.btn-light-add::before {
+    content: '\f067';
+    width: 15px;
+    height:15px;
+}
+.btn-light-remove::before {
+    content: '\f067';
+    width: 15px;
+    height:15px;
+}
+.margin-top-35 {
+    margin-top: 35px;
+}
+/*Este debe ir al final de los botones para que funcione el lado derecho */
+.btn-primary.btn-primary-right .textbut::before {
+    width: 0px;
+    height: 0px;
+    content: '';
+}
+
+/*botones de evaluacionde webservice*/
+.evalfunction {
+    background: white;
+    border-radius: 15px;
+    display: block;
+    font-size: .8rem;
+    height: 60px;
+    /*width: 250px;*/
+    overflow: hidden;
+    box-shadow: 0px 0px 7px #808080a8;
+    margin: 5px;
+}
+.evalright {
+    float: left;
+    background: white;
+    vertical-align: middle;
+    width: 220px;
+    margin-left: 20px;
+    padding-top: 9px;
+}
+.evalleft {
+    height: 100%;
+    display: block;
+    float: left;
+    width: 50px;
+    background-color: #001f22;
+    overflow: hidden;
+    background-position: 10PX center;
+    background-size: 35px;
+    background-repeat: no-repeat;
+}
+.evalleft.evok {
+    background-image: url(../img/CHECK.png);
+}
+.evalleft.evbook {
+    background-image: url(../img/BOOK.png);
+}
+
+.evalleft.evrejected {
+    background-image: url(../img/TIMES_RED.png);
+}
+.evalleft.evloading::before {
+    height: 58px;
+    display: block;
+    float: left;
+    width: 50px;
+    overflow: hidden;
+    background-position: center;
+    background-size: 35px;
+    background-repeat: no-repeat;
+    content: '';
+    background-image: url(../img/WAITING.png);
+    animation-name: rotate;
+    animation-duration:2s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+}
+
+.evalleft::after {
+    content: "";
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 15px solid #001f22;
+    position: absolute;
+    display: block;
+    margin-left: 50px;
+}
+@-webkit-keyframes rotate {
+    from {-webkit-transform:rotate(0deg);}
+    to {  -webkit-transform:rotate(360deg);}
+}
+
+.wrong {
+    color: #961731;
+}
+input[type="file"] {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.labelfile {
+    background: white;
+    border-radius: 15px;
+    display: block;
+    font-size: .9rem;
+    height: 60px;
+    width: 300px;
+    overflow: hidden;
+    box-shadow: 0px 0px 7px #808080a8;
+    margin: 5px;
+    transition: all .5s;
+    cursor: pointer;
+}
+.fileleft {
+    height: 100%;
+    display: block;
+    float: left;
+    width: 50px;
+    background-color: #001f22;
+    overflow: hidden;
+    background-position: 10PX center;
+    background-size: 35px;
+    background-repeat: no-repeat;
+}
+.fileleft::after {
+    content: "";
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 15px solid #001f22;
+    position: absolute;
+    display: block;
+    margin-left: 50px;
+}
+.fileleft.fileok {
+    background-image: url(../img/CHECK.png);
+}
+.fileleft.fileup {
+    background-image: url(../img/UPLOAD.png);
+}
+.fileleft.filewrong {
+    background-image: url(../img/TIMES_RED.png);
+}
+.state.p-success {
+    font-size: 2rem;
+}
+.pretty input:checked~.state.p-success .icon, .pretty input:checked~.state.p-success .svg, .pretty.p-toggle .state.p-success .icon, .pretty.p-toggle .state.p-success .svg {
+    color: #ffffff;
+    stroke: #003f48;
+    background: #003f48;
+}
+.leftcheck {
+    display: inline-block;
+    vertical-align: middle;
+}
+span.rigthcheck {
+    font-weight: bold;
+    color: #003338;
+}
+.nospace {
+    margin: 0;
+}
+
+.topspacebox {
+    padding-top: 17px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+.inner {
+    padding-left: 1em;
+    overflow: hidden;
+    display: none;
+}
+
+
+li {
+    margin: .5em 0;
+}
+a.toggle {
+    width: 100%;
+    display: block;
+    background: rgba(0, 0, 0, 0.78);
+    color: #fefefe;
+    padding: .75em;
+    border-radius: 0.15em;
+    transition: background .3s ease;
+}
+a.toggle::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin: 0px 10px;
+    vertical-align: middle;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+a.toggle {
+    width: 100%;
+    display: block;
+    background-color: white;
+    color: #a87a11;
+    padding: 5px;
+    border-radius: 6px;
+    transition: background .3s ease;
+    text-decoration: none;
+    font-size: .9rem;
+    box-shadow: -1px -1px 9px #949292;
+}
+a.toggle.active::before {
+    background-image: url(../img/CHECK.png);
+
+}
+ul.simplelist {
+    list-style: decimal;
+    font-size: .9rem;
+    padding-left: 15px;
+    color: #003338;
+}
+.modal-header {
+    background: #004750;
+    color: white;
+}
+.modal-title .h5 {
+    font-weight: 600;
+}
+.modal-content {
+    border-radius: 1.3rem;
+    overflow: hidden;
+    background: #e6e6e6;
+}
+.formremove {
+    width: 92%;
+    display: inline-block;
+    margin-right: 1%;
+    margin-top: 5px;
+}
+span.listinput {
+    font-weight: 600;
+    color: #004750;
+    padding: 2px;
+}
+.firstinput .form-control {
+    width: 92%;
+    display: inline-block;
+}
+span.removeinput {
+    font-weight: 900;
+    color: #747371;
+    cursor: pointer;
+}
+.removeinput:hover {
+    font-size: 1.1rem;
+}
+.contrato.whitebox {
+    padding: 0;
+    overflow: hidden;
+}
+.headercontrato {
+    background: #004750;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+}
+.contcontrato {
+    padding: 10px;
+}
+/*TODO IDLE ICON*/
+
+
+/*CATALOGO*/
+
+.box_info_emp{
+    position: relative;
+    background: #e6e6e6;
+    box-shadow: -1px 2px 13px #888888;
+}
+.box_info_emp .row {
+    margin: 0px;
+}
+.img_logos_int{
+    width: 100%;
+}
+.shadow-right{
+    box-shadow: 4px 0px 4px #888888;
+    padding: 10px;
+}
+.catalogo_black{
+    background-image: linear-gradient(91deg, #090C0D 0%, #31312F 100%);
+    padding: 20px 15px 10px;
+    text-align: center;
+}
+.tit_gray{
+    color: #C8CFCD;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+.tit_gold{
+    color: #B47F00;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+.border_right{
+    border-right: 2px solid #C8CFCD;
+}
+
+@media all and (max-width: 991px){
+    .box_info_emp {
+        padding: 0px;
+    }
+}
+@media all and (max-width: 850px){
+    .shadow-right {
+        margin: 0px;
+        padding: 30px 0px;
+    }
+}
+@media all and (max-width: 767px){
+    .box_info_emp {
+        background: #e6e6e6;
+        box-shadow: -1px 2px 13px #888888;
+    }
+    .img_logos_int {
+        width: 50%;
+    }
+    .shadow-right {
+        box-shadow: 0px 0px 0px;
+        margin: 0px;
+        padding: 0px 0px 8px;;
+        text-align: center;
+    }
+    .catalogo_black {
+        padding: 8px 5px;
+    }
+}
+
+
+@media all and (max-width: 500px){
+    .img_logos_int {
+        width: 80%;
+    }
+    .tit_gray {
+        font-size: .9rem;
+    }
+    .tit_gold {
+        font-size: .9rem;
+    }
+}
