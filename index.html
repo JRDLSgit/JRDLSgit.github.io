@@ -1,14 +1,374 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BPM Bajo Perfil Mexa</title>
-    <meta name="description" content="Difundiendo la electrónica mexicana con conciencia, comedia y cultura." />
-    <script type="module" crossorigin src="/assets/index-BJvnqY2r.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-ogiKI_VU.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPM Bajo Perfil Mexa - Podcast de Electrónica & Cultura Rave</title>
+    <meta name="description" content="Podcast dedicado a música electrónica mexicana, cultura rave, talento underground, eventos y orientación para nuevas generaciones.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Space+Grotesk:wght@300;400;600;700&family=Teko:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="./css/styles.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Entrance Overlay (Option B) -->
+    <div id="entrance-overlay" class="entrance-overlay">
+        <div class="entrance-content text-center">
+            <img src="./Logo.png" alt="BPM Logo" style="max-width: 300px; margin-bottom: 2rem; filter: drop-shadow(0 0 20px rgba(123,0,255,0.6));">
+            <h2 class="section-title text-neon-green mb-2">EL RAVE ESTÁ LISTO</h2>
+            <p class="sub-quote graffiti-text mb-4">¿Entramos al under?</p>
+            <button id="enter-btn" class="btn btn-primary neon-purple btn-enter mt-4 text-xl">
+                <i class="fas fa-play"></i> Ingresar al Bajo Perfil Mexa
+            </button>
+        </div>
+    </div>
+    
+    <!-- Background Audio -->
+    <audio id="bg-audio" loop preload="auto">
+        <source src="Corona_Encendida .mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Background Noise Overlay -->
+    <div class="noise-overlay"></div>
+    <div class="scanlines"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#hero" class="nav-logo">
+                <img src="./Logo.png" alt="BPM Logo Pequeño">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about" class="glitch-link" data-text="Sobre BPM">Sobre BPM</a></li>
+                <li><a href="#episode" class="glitch-link" data-text="Episodios">Episodios</a></li>
+                <li><a href="#talent" class="glitch-link" data-text="Talento">Talento</a></li>
+                <li><a href="#events" class="glitch-link" data-text="Eventos">Eventos</a></li>
+                <li><a href="#merch" class="glitch-link" data-text="Merch">Merch</a></li>
+            </ul>
+            <button class="menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- 1 HERO -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content fade-in-up">
+            <div class="logo-container">
+                <img src="./Logo.png" alt="BPM Bajo Perfil Mexa Logo" class="main-logo drop-shadow-glow">
+            </div>
+            
+            <h1 class="hero-phrase graffiti-text">Échale papá pa pa pa</h1>
+            
+            <p class="hero-subtext">
+                <span class="highlight-purple">Electrónica mexicana</span> • Cultura rave • Bajo perfil • <span class="highlight-green">Alto BPM</span>
+            </p>
+            
+            <div class="hero-buttons">
+                <a href="#episode" class="btn btn-primary neon-purple">
+                    <i class="fas fa-podcast"></i> Escuchar podcast
+                </a>
+                <a href="#talent" class="btn btn-outline neon-green">
+                    <i class="fas fa-headphones"></i> Ver talento mexa
+                </a>
+                <a href="#events" class="btn btn-outline dirty-white">
+                    <i class="fas fa-calendar-alt"></i> Eventos electrónicos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2 SOBRE BPM -->
+    <section id="about" class="about-section scroll-reveal">
+        <div class="container section-header">
+            <h2 class="section-title text-glitch" data-text="¿Qué es BPM Bajo Perfil Mexa?">
+                ¿Qué es BPM Bajo Perfil Mexa?
+            </h2>
+            <p class="section-description">
+                Podcast dedicado a la difusión de música electrónica, específicamente talento mexicano. Una guía con reseñas de eventos, amor por los beats, prevención para nuevas generaciones, un poco de farándula y, sobre todo, <span class="text-neon-green">comedia</span>.
+            </p>
+        </div>
+        
+        <div class="container about-grid">
+            <div class="about-card hover-glow-purple">
+                <i class="fas fa-broadcast-tower card-icon"></i>
+                <h3>Podcast electrónico</h3>
+            </div>
+            <div class="about-card hover-glow-green">
+                <i class="fas fa-record-vinyl card-icon"></i>
+                <h3>Talento mexicano</h3>
+            </div>
+            <div class="about-card hover-glow-purple">
+                <i class="fas fa-ticket-alt card-icon"></i>
+                <h3>Eventos rave</h3>
+            </div>
+            <div class="about-card hover-glow-green">
+                <i class="fas fa-laugh-squint card-icon"></i>
+                <h3>Comedia electrónica</h3>
+            </div>
+            <div class="about-card hover-glow-purple">
+                <i class="fas fa-shield-alt card-icon"></i>
+                <h3>Tips y prevención</h3>
+            </div>
+            <div class="about-card hover-glow-green">
+                <i class="fas fa-mask card-icon"></i>
+                <h3>Cultura underground</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 ÚLTIMO EPISODIO -->
+    <section id="episode" class="episode-section scroll-reveal">
+        <div class="container">
+            <div class="episode-container">
+                <!-- Large Card -->
+                <div class="episode-main-card">
+                    <div class="episode-badge">NUEVO</div>
+                    <div class="episode-visual">
+                        <div class="visual-overlay"></div>
+                    </div>
+                    <div class="episode-info">
+                        <h4 class="ep-number">EPISODIO #001</h4>
+                        <h3 class="ep-guest">JaviVi González</h3>
+                        <p class="ep-theme">El inicio del Bajo Perfil</p>
+                        <p class="ep-desc">Te contamos de qué trata el proyecto, la urgencia de guiar a nuevas generaciones y cómo la cultura rave ha evolucionado en México.</p>
+                        <div class="ep-actions">
+                            <a href="#" class="btn btn-spotify"><i class="fab fa-spotify"></i> Spotify</a>
+                            <a href="#" class="btn btn-youtube"><i class="fab fa-youtube"></i> YouTube</a>
+                            <a href="#" class="btn btn-text">Ver más <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Episode List -->
+                <div class="episode-sidebar">
+                    <h3 class="sidebar-title">Más episodios</h3>
+                    <ul class="ep-list">
+                        <li class="ep-item hover-glow-green">
+                            <div class="ep-thumb"></div>
+                            <div class="ep-meta">
+                                <h5>EP #000 - Piloto</h5>
+                                <span>Próximamente</span>
+                            </div>
+                            <i class="fas fa-play play-icon"></i>
+                        </li>
+                        <li class="ep-item hover-glow-green locked">
+                            <div class="ep-thumb"></div>
+                            <div class="ep-meta">
+                                <h5>EP #002 - ???</h5>
+                                <span>Top Secret</span>
+                            </div>
+                            <i class="fas fa-lock play-icon"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4 TALENTO MEXA -->
+    <section id="talent" class="talent-section scroll-reveal">
+        <div class="container section-header">
+            <h2 class="section-title graffiti-text text-green">Talento Electrónico Mexicano</h2>
+            <p class="section-description">Apoyando y difundiendo a los productores y DJs que rompen la escena nacional e internacional.</p>
+        </div>
+        
+        <div class="container talent-grid">
+            <!-- Talent Cards -->
+            <div class="talent-card">
+                <div class="talent-img" style="background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=600&fit=crop');"></div>
+                <div class="talent-info">
+                    <h3 class="dj-name">DJ Mictlán</h3>
+                    <span class="dj-genre">Hard Techno</span>
+                    <button class="btn btn-icon neon-purple"><i class="fas fa-play"></i> Escuchar</button>
+                </div>
+            </div>
+            <div class="talent-card">
+                <div class="talent-img" style="background-image: url('https://images.unsplash.com/photo-1571266028243-3716f02d2d2e?w=600&h=600&fit=crop');"></div>
+                <div class="talent-info">
+                    <h3 class="dj-name">La Bruja del Norte</h3>
+                    <span class="dj-genre">Psytrance</span>
+                    <button class="btn btn-icon neon-green"><i class="fas fa-play"></i> Escuchar</button>
+                </div>
+            </div>
+            <div class="talent-card">
+                <div class="talent-img" style="background-image: url('https://images.unsplash.com/photo-1598387181032-a310322ba5b5?w=600&h=600&fit=crop');"></div>
+                <div class="talent-info">
+                    <h3 class="dj-name">Under Mex</h3>
+                    <span class="dj-genre">House / Tech House</span>
+                    <button class="btn btn-icon neon-purple"><i class="fas fa-play"></i> Escuchar</button>
+                </div>
+            </div>
+            <div class="talent-card">
+                <div class="talent-img" style="background-image: url('https://images.unsplash.com/photo-1520262454473-a1a82276a574?w=600&h=600&fit=crop');"></div>
+                <div class="talent-info">
+                    <h3 class="dj-name">JaviVi (Host & DJ)</h3>
+                    <span class="dj-genre">Multigenre Rave</span>
+                    <button class="btn btn-icon neon-green"><i class="fas fa-play"></i> Escuchar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5 EVENTOS -->
+    <section id="events" class="events-section scroll-reveal">
+        <div class="container section-header">
+            <h2 class="section-title text-glitch" data-text="Próximos Eventos">Próximos Eventos</h2>
+            <p class="section-description">Los mejores raves y fiestas seleccionadas por BPM. No cover o cover justo, puro pinche baile.</p>
+        </div>
+        
+        <div class="container event-list">
+            <div class="event-card flyer-style">
+                <div class="event-date">
+                    <span class="day">15</span>
+                    <span class="month">OCT</span>
+                </div>
+                <div class="event-details">
+                    <h3>Bajo Perfil Underground Vol 1.</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Bodega Secreta, CDMX</p>
+                </div>
+                <a href="#" class="btn btn-primary neon-purple">Ver Info</a>
+            </div>
+            
+            <div class="event-card flyer-style highlight-border">
+                <div class="event-date">
+                    <span class="day">31</span>
+                    <span class="month">OCT</span>
+                </div>
+                <div class="event-details">
+                    <h3>Halloween Rave Mexa</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Bosque de Tlalpan</p>
+                </div>
+                <a href="#" class="btn btn-primary neon-green">Ver Info</a>
+            </div>
+            
+            <div class="event-card flyer-style">
+                <div class="event-date">
+                    <span class="day">12</span>
+                    <span class="month">NOV</span>
+                </div>
+                <div class="event-details">
+                    <h3>Tech House Sesiones x BPM</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rooftop Centro Histórico</p>
+                </div>
+                <a href="#" class="btn btn-primary neon-purple">Ver Info</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6 COMUNIDAD BPM -->
+    <section id="community" class="community-section scroll-reveal section-parallax">
+        <div class="section-bg-overlay"></div>
+        <div class="container text-center relative-z">
+            <h2 class="section-title text-white">Únete a la comunidad BPM</h2>
+            <p class="section-description text-white">Electrónica mexicana sin filtro. Síguenos y comparte el BPM.</p>
+            
+            <div class="social-grid">
+                <a href="#" class="social-icon instagram hover-glow-purple">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon tiktok hover-glow-green">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="#" class="social-icon youtube hover-glow-purple">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="#" class="social-icon spotify hover-glow-green">
+                    <i class="fab fa-spotify"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7 MERCH -->
+    <section id="merch" class="merch-section scroll-reveal">
+        <div class="container section-header">
+            <h2 class="section-title graffiti-text text-neon-purple">Merch Oficial</h2>
+            <p class="section-description">Viste bajo perfil. Apoya el proyecto y ponte trucha.</p>
+        </div>
+        
+        <div class="container merch-grid">
+            <div class="merch-card">
+                <div class="merch-img-container">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop" alt="Playera BPM" class="merch-img">
+                </div>
+                <h3>Playera BPM</h3>
+                <span class="price">$350 MXN</span>
+                <button class="btn btn-block neon-purple">Comprar</button>
+            </div>
+            <div class="merch-card">
+                <div class="merch-img-container">
+                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=400&fit=crop" alt="Hoodie BPM" class="merch-img">
+                </div>
+                <h3>Hoodie BPM</h3>
+                <span class="price">$650 MXN</span>
+                <button class="btn btn-block neon-green">Comprar</button>
+            </div>
+            <div class="merch-card">
+                <div class="merch-img-container">
+                    <div class="placeholder-img merch-img bg-dark-gray flex-center">
+                        <i class="fas fa-sticky-note fa-3x text-green"></i>
+                    </div>
+                </div>
+                <h3>Stickers BPM Pack</h3>
+                <span class="price">$100 MXN</span>
+                <button class="btn btn-block neon-purple">Comprar</button>
+            </div>
+            <div class="merch-card">
+                <div class="merch-img-container">
+                    <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=400&fit=crop" alt="Gorra BPM" class="merch-img">
+                </div>
+                <h3>Gorra BPM</h3>
+                <span class="price">$250 MXN</span>
+                <button class="btn btn-block neon-green">Comprar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8 SECCIÓN FRASE -->
+    <section class="quote-section fullscreen-fluid flex-center text-center">
+        <div class="quote-content scroll-reveal">
+            <h2 class="giant-text glitch-text-base text-neon-purple">BAJO PERFIL<br><span class="text-neon-green">ALTO BPM</span></h2>
+            <p class="sub-quote graffiti-text mt-4">Échale papá pa pa pa</p>
+        </div>
+    </section>
+
+    <!-- 9 FOOTER -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="./Logo.png" alt="BPM Logo Footer">
+                <p>No venimos a decirte qué escuchar. Venimos a enseñarte a escuchar mejor.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="#about">Sobre BPM</a></li>
+                    <li><a href="#episode">Episodios</a></li>
+                    <li><a href="#talent">Talento</a></li>
+                    <li><a href="#events">Eventos</a></li>
+                </ul>
+            </div>
+            <div class="footer-socials">
+                <h4>Síguenos</h4>
+                <div class="social-flex">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-spotify"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center">
+            <p>&copy; 2026 BPM Bajo Perfil Mexa. Todos los derechos reservados.</p>
+            <p class="small-text">Diseñado con ❤️ puro rave y electrónica mexa.</p>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
 </html>
