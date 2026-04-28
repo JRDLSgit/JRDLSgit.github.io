@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (enterBtn && entranceOverlay && bgAudio) {
         enterBtn.addEventListener('click', () => {
-            bgAudio.volume = 0.6; // Starts at 60% volume
+            bgAudio.volume = 0.6; // Starts at 40% volume
             bgAudio.play().catch(e => console.log('Audio play failed:', e));
             entranceOverlay.classList.add('hidden');
             document.body.classList.remove('no-scroll');
