@@ -271,6 +271,28 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1rem;
 }
 
+.btn-listen {
+  border-radius: 50px;
+  padding: 0.6rem 1.5rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 1px;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-listen:active {
+  transform: scale(0.92) translateY(2px) !important;
+  box-shadow: inset 0 4px 8px rgba(0,0,0,0.6), 0 0 10px rgba(123,0,255,0.8) !important;
+  filter: brightness(0.85);
+}
+
+.btn-primary.neon-green.btn-listen:active {
+  box-shadow: inset 0 4px 8px rgba(0,0,0,0.6), 0 0 10px rgba(166,255,0,0.8) !important;
+}
+
 .btn-block {
   width: 100%;
 }
